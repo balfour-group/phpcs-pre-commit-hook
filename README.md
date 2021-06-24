@@ -3,21 +3,21 @@
 ## About
 
 Auto installed git pre-commit hook for running [PHP Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer)
-code checking to PSR2 coding standard compliance. It checks only files that are to be committed.
+code checking to PSR12 coding standard compliance. It checks only files that are to be committed.
 
-Inspired by [Enforce code standards with composer, git hooks, and phpcs](http://tech.zumba.com/2014/04/14/control-code-quality/) and https://github.com/smgladkovskiy/phpcs-git-pre-commit and https://gist.github.com/BrizzleRocker/62ed61b37acf05344d4bce894e719251 . Installer checks OS on hosting machine and installs needed hooks for platform.
+Inspired by [Enforce code standards with composer, git hooks, and phpcs](http://tech.zumba.com/2014/04/14/control-code-quality/) and https://github.com/smgladkovskiy/phpcs-git-pre-commit
 
 ## Installation
 
-Install `wickedreports/phpcs-pre-commit-hook` with composer require command:
+Install `balfour-group/phpcs-pre-commit-hook` with composer require command:
 
-    composer require "wickedreports/phpcs-pre-commit-hook"
+    composer require "balfour-group/phpcs-pre-commit-hook"
 
-Or alternatively, include a dependency for `wickedreports/phpcs-pre-commit-hook` in your composer.json file manually:
+Or alternatively, include a dependency for `balfour-group/phpcs-pre-commit-hook` in your composer.json file manually:
 
     {
         "require-dev": {
-            "wickedreports/phpcs-pre-commit-hook": "*"
+            "balfour-group/phpcs-pre-commit-hook": "dev-master"
         }
     }
 
@@ -38,4 +38,4 @@ Then run `composer install` or `composer update`. `pre-commit` hook will be inst
 
 Run `git commit` and pre-commit hook will check your committed files like if you run
 
-    php phpcs.phar --standard=PSR2 --colors --encoding=utf-8 -n -p /path/to/file.php
+    php phpcs.phar --standard=PSR12 --colors --encoding=utf-8 -n -p /path/to/file.php
