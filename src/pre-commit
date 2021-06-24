@@ -3,6 +3,13 @@
 PROJECT=`php -r "echo dirname(dirname(dirname(realpath('$0'))));"`
 STAGED_FILES_CMD=`git diff --cached --name-only --diff-filter=ACMR HEAD | grep \\\\.php`
 
+if [ -d .git ];
+then
+    PHPCS=src/vendor/bin/phpcs
+else
+    PHPCS=vendor/bin/phpcs
+fi
+
 # Determine if a file list is passed
 if [ "$#" -eq 1 ]
 then
@@ -29,12 +36,12 @@ done
 if [ "$FILES" != "" ]
 then
     echo "Running Code Sniffer. Code standard PSR12."
-    src/vendor/bin/phpcs --standard=PSR12 --colors --encoding=utf-8 -n -p $FILES
+    $PHPCS --standard=PSR12 --colors --encoding=utf-8 -n -p $FILES
     if [ $? != 0 ]
     then
         echo "Fix the error before commit!"
         echo "Run"
-        echo "  src/vendor/bin/phpcbf --standard=PSR12 $FILES"
+        echo "  [src/]vendor/bin/phpcbf --standard=PSR12 $FILES"
         echo "for automatic fix or fix it manually."
         exit 1
     fi
